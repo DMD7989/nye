@@ -21,3 +21,7 @@ Voir [docs/Cahier de charges.docx](docs/Cahier%20de%20charges.docx) pour les exi
 - [ ] Intégration réelle : passerelle SMS, projet Firebase (FCM), service de modération d'image
 - [ ] Politique de rétention/anonymisation des alertes clôturées
 - [ ] Diagrammes UML / MCD formels
+
+## Licence
+
+Tous droits réservés. Voir [LICENSE](LICENSE).
