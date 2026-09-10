@@ -1,0 +1,65 @@
+<div class="page-header">
+  <div>
+    <h1>Tableau de bord</h1>
+    <p class="page-subtitle">Vue d'ensemble de l'activité de la plateforme</p>
+  </div>
+</div>
+
+@if (loading()) {
+  <div class="center-spinner"><mat-spinner /></div>
+} @else if (error()) {
+  <p class="error">{{ error() }}</p>
+} @else {
+  <div class="cards-grid">
+    @for (card of cards(); track card.label) {
+      <mat-card class="stat-card" [class]="card.accent">
+        <div class="stat-icon-chip">
+          <mat-icon>{{ card.icon }}</mat-icon>
+        </div>
+        <div class="stat-body">
+          <div class="stat-value">{{ card.value }}</div>
+          <div class="stat-label">{{ card.label }}</div>
+        </div>
+      </mat-card>
+    }
+  </div>
+
+  <mat-card class="chart-card">
+    <h2>Tendance sur 30 jours</h2>
+    <div class="legend">
+      <span class="legend-item"><span class="dot created"></span> Créées</span>
+      <span class="legend-item"><span class="dot resolved"></span> Résolues</span>
+    </div>
+    <svg [attr.viewBox]="'0 0 ' + chartWidth + ' ' + chartHeight" class="trend-chart">
+      @for (point of trends(); track point.date; let i = $index) {
+        <rect
+          class="bar created"
+          [attr.x]="barX(i)"
+          [attr.y]="barY(point.alertsCreated)"
+          [attr.width]="barWidth()"
+          [attr.height]="barHeight(point.alertsCreated)"
+        >
+          <title>{{ point.date }} — {{ point.alertsCreated }} créées</title>
+        </rect>
+        <rect
+          class="bar resolved"
+          [attr.x]="barX(i) + barWidth() + 2"
+          [attr.y]="barY(point.alertsResolved)"
+          [attr.width]="barWidth()"
+          [attr.height]="barHeight(point.alertsResolved)"
+        >
+          <title>{{ point.date }} — {{ point.alertsResolved }} résolues</title>
+        </rect>
+        @if (shouldShowLabel(i)) {
+          <text [attr.x]="barX(i)" [attr.y]="chartHeight - 8" class="axis-label">
+            {{ formatShortDate(point.date) }}
+          </text>
+        }
+      }
+    </svg>
+  </mat-card>
+
+  <p class="heatmap-link">
+    Voir la répartition géographique des alertes sur la <a routerLink="/heatmap">carte de chaleur</a>.
+  </p>
+}

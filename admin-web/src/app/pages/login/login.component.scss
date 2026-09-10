@@ -1,0 +1,148 @@
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  background: var(--nye-surface-alt);
+}
+
+.login-hero {
+  flex: 1 1 46%;
+  max-width: 560px;
+  background: linear-gradient(155deg, #2a1c12 0%, #723600 55%, #bc5d00 100%);
+  color: #fff8f5;
+  padding: 56px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    opacity: 0.6;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 380px;
+}
+
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 48px;
+
+  mat-icon {
+    font-size: 26px;
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.hero-content h1 {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 16px;
+}
+
+.hero-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 248, 245, 0.85);
+  margin: 0 0 32px;
+}
+
+.hero-stats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 14px;
+  color: rgba(255, 248, 245, 0.9);
+}
+
+.hero-stats .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffb787;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.login-form-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-form-wrap {
+  width: 100%;
+  max-width: 360px;
+}
+
+.form-header {
+  margin-bottom: 28px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 0 6px;
+    color: var(--nye-ink);
+  }
+
+  p {
+    margin: 0;
+    color: rgba(32, 26, 23, 0.6);
+    font-size: 14px;
+  }
+}
+
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fdecea;
+  color: #b3261e;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-size: 13px;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 8px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .login-hero {
+    display: none;
+  }
+
+  .login-form-panel {
+    padding: 24px;
+  }
+}

@@ -1,0 +1,40 @@
+.toolbar {
+  margin-bottom: 16px;
+}
+
+.status-filter {
+  width: 240px;
+}
+
+.map-card {
+  border-radius: 16px;
+  border: 1px solid var(--nye-border);
+  box-shadow: 0 1px 2px rgba(32, 26, 23, 0.04);
+  overflow: hidden;
+}
+
+.map-container {
+  height: 62vh;
+  width: 100%;
+}
+
+.legend {
+  display: flex;
+  gap: 18px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: rgba(32, 26, 23, 0.6);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}

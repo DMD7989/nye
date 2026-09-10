@@ -1,0 +1,41 @@
+.users-table {
+  width: 100%;
+}
+
+.verified {
+  color: #1b5e3a;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.role-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(32, 26, 23, 0.06);
+  color: rgba(32, 26, 23, 0.6);
+
+  &.admin {
+    background: rgba(188, 93, 0, 0.14);
+    color: #bc5d00;
+  }
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(27, 94, 58, 0.12);
+  color: #1b5e3a;
+
+  &.suspended {
+    background: rgba(32, 26, 23, 0.08);
+    color: rgba(32, 26, 23, 0.55);
+  }
+}

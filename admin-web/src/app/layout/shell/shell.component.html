@@ -1,0 +1,39 @@
+<mat-sidenav-container class="shell">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="brand">
+      <div class="brand-mark">
+        <mat-icon>travel_explore</mat-icon>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">N'yé</span>
+        <span class="brand-sub">Console admin</span>
+      </div>
+    </div>
+
+    <nav class="nav-list">
+      @for (item of navItems; track item.path) {
+        <a class="nav-item" [routerLink]="item.path" routerLinkActive="active-link">
+          <mat-icon>{{ item.icon }}</mat-icon>
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+
+    <div class="sidenav-footer">N'yé Admin · v1.0</div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <header class="topbar">
+      <div class="user-chip">
+        <div class="avatar">{{ initials() }}</div>
+        <span class="user-name">{{ authService.currentUser()?.fullName }}</span>
+      </div>
+      <button mat-icon-button (click)="logout()" title="Se déconnecter" class="logout-btn">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </header>
+    <div class="content">
+      <router-outlet />
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

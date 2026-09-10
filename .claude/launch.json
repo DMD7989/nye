@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nye-admin",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start", "--prefix", "admin-web"],
+      "port": 4200
+    }
+  ]
+}

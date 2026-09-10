@@ -1,0 +1,55 @@
+<div class="login-page">
+  <aside class="login-hero">
+    <div class="hero-content">
+      <div class="hero-brand">
+        <mat-icon>travel_explore</mat-icon>
+        <span>N'yé</span>
+      </div>
+      <h1>Retrouver, ensemble.</h1>
+      <p>
+        La console d'administration N'yé permet de valider les alertes de disparition, modérer le
+        contenu et suivre l'activité de la plateforme à travers le Mali.
+      </p>
+      <ul class="hero-stats">
+        <li><span class="dot"></span> Validation des alertes en temps réel</li>
+        <li><span class="dot"></span> Modération du contenu signalé</li>
+        <li><span class="dot"></span> Cartographie des signalements</li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="login-form-panel">
+    <div class="login-form-wrap">
+      <div class="form-header">
+        <h2>Connexion</h2>
+        <p>Accédez à votre espace d'administration.</p>
+      </div>
+
+      @if (error()) {
+        <div class="error-banner">
+          <mat-icon>error_outline</mat-icon>
+          {{ error() }}
+        </div>
+      }
+
+      <form (ngSubmit)="submit()" class="login-form">
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Téléphone</mat-label>
+          <input matInput [(ngModel)]="phone" name="phone" placeholder="+22300000000" autocomplete="username" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput type="password" [(ngModel)]="password" name="password" autocomplete="current-password" />
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit" class="submit-btn" [disabled]="loading()">
+          @if (loading()) {
+            <mat-spinner diameter="20" style="display:inline-block; margin-right:8px" />
+          }
+          Se connecter
+        </button>
+      </form>
+    </div>
+  </main>
+</div>

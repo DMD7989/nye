@@ -1,0 +1,147 @@
+.shell {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 264px;
+  background: linear-gradient(180deg, #241a14 0%, #17110d 100%);
+  border-right: none;
+  color: #f2e9e2;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 20px 24px;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff8e36, #bc5d00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a130f;
+  flex-shrink: 0;
+
+  mat-icon {
+    font-size: 22px;
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.brand-name {
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.2px;
+}
+
+.brand-sub {
+  font-size: 11px;
+  color: rgba(242, 233, 226, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.nav-list {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 14px;
+  border-radius: 12px;
+  color: rgba(242, 233, 226, 0.72);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+  }
+}
+
+.active-link {
+  background: linear-gradient(135deg, rgba(255, 142, 54, 0.2), rgba(188, 93, 0, 0.16));
+  color: #ffb787 !important;
+  font-weight: 700;
+}
+
+.sidenav-footer {
+  padding: 16px 20px;
+  font-size: 11px;
+  color: rgba(242, 233, 226, 0.32);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.topbar {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  padding: 0 28px;
+  background: var(--nye-surface-alt);
+  border-bottom: 1px solid var(--nye-border);
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff8e36, #bc5d00);
+  color: #1a130f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--nye-ink);
+}
+
+.logout-btn {
+  color: rgba(32, 26, 23, 0.5);
+}
+
+.content {
+  padding: 32px;
+  background: var(--nye-surface);
+  min-height: calc(100vh - 68px);
+}

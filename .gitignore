@@ -1,0 +1,28 @@
+# Backend (Maven / Spring Boot)
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+
+# Mobile (Flutter)
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/build/
+mobile/.pub-cache/
+mobile/.pub/
+
+# Admin web (Angular / Node)
+admin-web/node_modules/
+admin-web/dist/
+admin-web/.angular/
+
+# Claude Code session-local state
+.claude/scheduled_tasks.lock
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

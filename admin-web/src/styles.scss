@@ -1,0 +1,111 @@
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+// N'yé brand tokens. The palette leans on warm ochre/terracotta (Sahel earth
+// tones, echoing the gold of the Malian flag) paired with a deep green — a
+// deliberate departure from the stock Material azure theme.
+:root {
+  --nye-ink: #201a17;
+  --nye-gold: #bc5d00;
+  --nye-gold-deep: #723600;
+  --nye-green: #1b5e3a;
+  --nye-surface: #faf6f2;
+  --nye-surface-alt: #ffffff;
+  --nye-border: rgba(32, 26, 23, 0.08);
+}
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$orange-palette,
+        tertiary: mat.$green-palette,
+      ),
+      typography: Manrope,
+      density: 0,
+    )
+  );
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  background-color: var(--nye-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+
+// ---- Shared layout primitives reused across the admin pages ----
+
+.page-header {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+
+  h1 {
+    margin: 0 0 4px;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--nye-ink);
+  }
+}
+
+.page-subtitle {
+  margin: 0;
+  color: rgba(32, 26, 23, 0.55);
+  font-size: 14px;
+}
+
+.center-spinner {
+  display: flex;
+  justify-content: center;
+  padding: 80px 0;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 64px 0;
+  color: rgba(32, 26, 23, 0.38);
+
+  mat-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+  }
+}
+
+.table-card {
+  border-radius: 16px;
+  border: 1px solid var(--nye-border);
+  box-shadow: 0 1px 2px rgba(32, 26, 23, 0.04);
+  overflow: hidden;
+  background: var(--nye-surface-alt);
+
+  table {
+    width: 100%;
+  }
+}

@@ -1,0 +1,92 @@
+<div class="page-header">
+  <div>
+    <h1>Alertes</h1>
+    <p class="page-subtitle">Validez, rejetez ou clôturez les signalements de disparition</p>
+  </div>
+</div>
+
+<div class="toolbar">
+  <mat-form-field appearance="outline" class="status-filter">
+    <mat-label>Filtrer par statut</mat-label>
+    <mat-select [(ngModel)]="selectedStatus" (selectionChange)="load()">
+      @for (option of statusOptions; track option.value) {
+        <mat-option [value]="option.value">{{ option.label }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <button mat-icon-button (click)="load()" matTooltip="Rafraîchir">
+    <mat-icon>refresh</mat-icon>
+  </button>
+</div>
+
+@if (loading()) {
+  <div class="center-spinner"><mat-spinner /></div>
+} @else if (alerts().length === 0) {
+  <div class="empty-state">
+    <mat-icon>inbox</mat-icon>
+    <p>Aucune alerte pour ce filtre.</p>
+  </div>
+} @else {
+  <div class="table-card">
+  <table mat-table [dataSource]="alerts()" class="alerts-table">
+    <ng-container matColumnDef="photo">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let alert">
+        @if (alert.photoUrl) {
+          <img [src]="alert.photoUrl" class="thumb" alt="" />
+        } @else {
+          <div class="thumb placeholder"><mat-icon>image_not_supported</mat-icon></div>
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Personne disparue</th>
+      <td mat-cell *matCellDef="let alert">
+        <div class="name">{{ alert.missingPersonName }}</div>
+        <div class="sub">{{ alert.description | slice: 0 : 80 }}{{ alert.description.length > 80 ? '…' : '' }}</div>
+        <div class="sub">Déclarant : {{ alert.createdByName ?? '—' }} · {{ alert.contactPhone }}</div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Statut</th>
+      <td mat-cell *matCellDef="let alert">
+        <span class="status-chip" [class]="alert.status.toLowerCase()">{{ statusLabel(alert.status) }}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="moderation">
+      <th mat-header-cell *matHeaderCellDef>Modération</th>
+      <td mat-cell *matCellDef="let alert">
+        @if (alert.moderationFlagged) {
+          <mat-icon class="flagged" [matTooltip]="alert.moderationReason ?? 'Contenu signalé'">flag</mat-icon>
+        }
+        @if (alert.rejectionReason) {
+          <div class="sub">Motif : {{ alert.rejectionReason }}</div>
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef>Créée le</th>
+      <td mat-cell *matCellDef="let alert">{{ alert.createdAt | date: 'dd/MM/yyyy HH:mm' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let alert">
+        @if (alert.status === 'PENDING') {
+          <button mat-flat-button color="primary" (click)="validate(alert)">Valider</button>
+          <button mat-button color="warn" (click)="reject(alert)">Rejeter</button>
+        } @else if (alert.status === 'ACTIVE') {
+          <button mat-flat-button color="primary" (click)="close(alert)">Clôturer</button>
+        }
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  </div>
+}
