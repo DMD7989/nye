@@ -15,7 +15,7 @@ class UserService {
   }) async {
     final result = await _call(() => apiClient.dio.patch('/api/users/me', data: {
           'fullName': fullName,
-          if (email != null) 'email': email,
+          'email': ?email,
           'language': language,
         }));
     return AppUser.fromJson(result.data as Map<String, dynamic>);
@@ -33,7 +33,7 @@ class UserService {
   Future<AppUser> updateNotificationPreferences({required bool enabled, double? radiusKm}) async {
     final result = await _call(() => apiClient.dio.put('/api/users/me/notification-preferences', data: {
           'enabled': enabled,
-          if (radiusKm != null) 'radiusKm': radiusKm,
+          'radiusKm': ?radiusKm,
         }));
     return AppUser.fromJson(result.data as Map<String, dynamic>);
   }

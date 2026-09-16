@@ -40,6 +40,7 @@ class _OtpScreenState extends State<OtpScreen> {
     });
     try {
       await context.read<AuthService>().verifyOtp(phone: widget.phone, code: _codeController.text.trim());
+      if (!mounted) return;
       await context.read<AuthProvider>().refreshProfile();
       if (!mounted) return;
       Navigator.of(context).pushAndRemoveUntil(

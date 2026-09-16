@@ -1,0 +1,38 @@
+name: Admin Web CI
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'admin-web/**'
+      - '.github/workflows/admin-web.yml'
+  pull_request:
+    paths:
+      - 'admin-web/**'
+      - '.github/workflows/admin-web.yml'
+
+defaults:
+  run:
+    working-directory: admin-web
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: admin-web/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test

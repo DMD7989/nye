@@ -12,9 +12,9 @@ class AlertService {
 
   Future<List<MissingAlert>> listPublic({double? lat, double? lon, double? radiusKm}) async {
     final result = await _call(() => apiClient.dio.get('/api/alerts', queryParameters: {
-          if (lat != null) 'lat': lat,
-          if (lon != null) 'lon': lon,
-          if (radiusKm != null) 'radiusKm': radiusKm,
+          'lat': ?lat,
+          'lon': ?lon,
+          'radiusKm': ?radiusKm,
         }));
     return (result.data as List)
         .map((e) => MissingAlert.fromJson(e as Map<String, dynamic>))
@@ -46,7 +46,7 @@ class AlertService {
   }) async {
     final result = await _call(() => apiClient.dio.post('/api/alerts', data: {
           'missingPersonName': missingPersonName,
-          if (missingPersonAge != null) 'missingPersonAge': missingPersonAge,
+          'missingPersonAge': ?missingPersonAge,
           'missingPersonIsMinor': missingPersonIsMinor,
           'description': description,
           'photoUrl': photoUrl,

@@ -4,6 +4,10 @@ Plateforme numérique de signalement et de recherche de personnes disparues au M
 
 Dépôt GitHub : [github.com/DMD7989/nye](https://github.com/DMD7989/nye)
 
+[![Backend CI](https://github.com/DMD7989/nye/actions/workflows/backend.yml/badge.svg)](https://github.com/DMD7989/nye/actions/workflows/backend.yml)
+[![Admin Web CI](https://github.com/DMD7989/nye/actions/workflows/admin-web.yml/badge.svg)](https://github.com/DMD7989/nye/actions/workflows/admin-web.yml)
+[![Mobile CI](https://github.com/DMD7989/nye/actions/workflows/mobile.yml/badge.svg)](https://github.com/DMD7989/nye/actions/workflows/mobile.yml)
+
 Voir [docs/Cahier de charges.docx](docs/Cahier%20de%20charges.docx) pour les exigences complètes.
 
 ## Structure du projet

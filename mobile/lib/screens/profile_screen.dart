@@ -51,6 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             email: _emailController.text.trim().isEmpty ? null : _emailController.text.trim(),
             language: 'fr',
           );
+      if (!mounted) return;
       await context.read<AuthProvider>().refreshProfile();
       setState(() {
         _message = 'Profil mis à jour.';
@@ -76,6 +77,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             enabled: _notificationsEnabled,
             radiusKm: _radiusKm,
           );
+      if (!mounted) return;
       await context.read<AuthProvider>().refreshProfile();
       setState(() {
         _message = 'Préférences de notifications mises à jour.';
