@@ -32,7 +32,7 @@ class AlertCard extends StatelessWidget {
                   : Image.network(
                       alert.photoUrl!,
                       fit: BoxFit.cover,
-                      errorBuilder: (_, __, ___) => Container(
+                      errorBuilder: (_, _, _) => Container(
                         color: Colors.grey.shade300,
                         child: const Icon(Icons.broken_image_outlined, color: Colors.grey),
                       ),

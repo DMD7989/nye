@@ -54,6 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
       // La géolocalisation est optionnelle pour consulter la carte : on continue sans tri par distance.
     }
 
+    if (!mounted) return;
+
     try {
       final alerts = await context.read<AlertService>().listPublic(lat: lat, lon: lon);
       setState(() => _alerts = alerts);
